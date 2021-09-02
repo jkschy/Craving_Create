@@ -50,7 +50,7 @@ export default function Food(props) {
 			<h1 className={classes.name}>
 				Total {props.name}: {getAmount}
 			</h1>
-			<img src={props.picture} alt={`A Picture of ${props.name}`} className={classes.image}></img>
+			<img src={props.picture} alt={`${props.name}`} className={classes.image}></img>
 			<div>
 				<CookProgress progress={getProgress}></CookProgress>
 				<Button className={classes.button} onClick={cook} variant="contained" color="secondary" disableRipple>
