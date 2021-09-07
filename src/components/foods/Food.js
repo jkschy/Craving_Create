@@ -94,8 +94,8 @@ export default function Food(props) {
         }, 200);
     };
 
-    function generateNewPrice() {
-        setPrice(Math.floor(Math.random() * maxPrice));
+    function generateRandomNumber(max, min) {
+        return (Math.floor(Math.random() * (max - min + 1)) + min);
     }
     const sell = () => {
         setAmount(getAmount - 1);
@@ -103,7 +103,7 @@ export default function Food(props) {
     };
 	useEffect(() => {
 		 setTimeout(() => {
-			generateNewPrice();
+             setPrice(generateRandomNumber(maxPrice, 0));
 		}, 5000);
 	  });
     return (

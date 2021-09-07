@@ -1,10 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import Food from "../foods/Food";
-
-import Bacon from "../../images/food/bacon/Bacon.png";
-import Lettuce from "../../images/food/lettuce/Lettuce.png";
-import Bread from "../../images/food/bread/Bread.png";
-
+import FoodContainer from "../Containers/FoodContainer";
 const useStyles = makeStyles({
 	foods: {
 		display: "flex",
@@ -22,9 +17,7 @@ function MainGame(props) {
 	return (
 		<div>
 			<div className={classes.foods}>
-				<Food name="Bacon" picture={Bacon}></Food>
-				<Food name="Lettuce" picture={Lettuce}></Food>
-				<Food name="Bread" picture={Bread}></Food>
+				<FoodContainer></FoodContainer>
 			</div>
 		</div>
 	);
