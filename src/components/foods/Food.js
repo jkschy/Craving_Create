@@ -1,8 +1,8 @@
-import CookProgress from "../main/ProgressBar/CookProgress";
+import CookProgress from "../ProgressBar/CookProgress";
 import { useState } from "react";
 import { makeStyles, Tooltip } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import StoredProgress from "../main/ProgressBar/StoreProgress";
+import StoredProgress from "../ProgressBar/StoreProgress";
 
 const useStyles = makeStyles({
 	name: {
