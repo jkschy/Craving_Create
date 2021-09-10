@@ -1,12 +1,9 @@
 import { makeStyles } from "@material-ui/core";
-import Food from "../foods/Food";
-import StartChoice from "./Start/StartChoice";
 import { useState } from "react";
 
-import Bacon from "../../images/food/bacon/Bacon.png";
-import Lettuce from "../../images/food/lettuce/Lettuce.png";
-import Bread from "../../images/food/bread/Bread.png";
-
+import Food from "../foods/Food";
+import StartChoice from "./Start/StartChoice";
+import AddFood from "../foods/AddFood";
 import { allIngredients } from "../../utilities/allIngredients";
 
 const useStyles = makeStyles({
@@ -17,7 +14,8 @@ const useStyles = makeStyles({
 		width: "1fr",
 		marginLeft: "10px",
 		marginRight: "10px",
-		columnCount: "3"
+		columnCount: "3",
+		height: "50vh"
 	},
 	foodsBlur: {
 		display: "flex",
@@ -27,6 +25,7 @@ const useStyles = makeStyles({
 		marginLeft: "10px",
 		marginRight: "10px",
 		columnCount: "3",
+		height: "50vh",
 		filter: "blur(8px)"
 	}
 });
@@ -35,6 +34,23 @@ function MainGame(props) {
 	const classes = useStyles();
 	const [gameStarted, setGameStarted] = useState(false);
 	const [unlockedFoods, setUnlockedFoods] = useState([]);
+
+	const addIngredient = () => {
+		switch (unlockedFoods.length) {
+			case 1: {
+				setUnlockedFoods([...unlockedFoods, allIngredients.lettuce]);
+				break;
+			}
+			case 2: {
+				setUnlockedFoods([...unlockedFoods, allIngredients.bread]);
+				break;
+			}
+			default: {
+				console.log("No More Ingredients left");
+				break;
+			}
+		}
+	};
 
 	return (
 		<div>
@@ -47,6 +63,7 @@ function MainGame(props) {
 				{unlockedFoods.map((ingredient) => (
 					<Food name={ingredient.name} picture={ingredient.picture}></Food>
 				))}
+				{unlockedFoods.length <= 2 && <AddFood addIngredient={addIngredient}></AddFood>}
 			</div>
 		</div>
 	);
